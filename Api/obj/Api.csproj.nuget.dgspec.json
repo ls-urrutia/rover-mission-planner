@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\Api\\Api.csproj": {}
+    "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\api\\Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\Api\\Api.csproj": {
+    "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\Api\\Api.csproj",
+        "projectUniqueName": "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\Api\\Api.csproj",
+        "projectPath": "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\api\\Api.csproj",
         "packagesPath": "C:\\Users\\luise\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\Api\\obj\\",
+        "outputPath": "C:\\Users\\luise\\Dropbox\\Prog\\tests\\rover-mission-planner\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luise\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -53,6 +53,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.17, )"

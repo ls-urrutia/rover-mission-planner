@@ -1,10 +1,15 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Api.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Api.Validators.RoverTaskValidator>());
 
 var app = builder.Build();
 
@@ -16,6 +21,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 
@@ -38,6 +44,8 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
+app.MapGet("/throw", () => { throw new Exception("¡Esto es una excepción de prueba!"); });
 
 app.Run();
 
