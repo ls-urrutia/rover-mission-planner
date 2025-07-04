@@ -1,11 +1,21 @@
 public class RoverTask
 {
     public Guid Id { get; set; }
-    public string RoverName { get; set; }
+    public required string RoverName { get; set; }
     public TaskType TaskType { get; set; }
     public double Latitude { get; set; }
     public double Longitude { get; set; }
-    public DateTime StartsAt { get; set; }
+    private DateTime _startsAt;
+    public DateTime StartsAt
+    {
+        get => _startsAt;
+        set
+        {
+            if (value.Kind != DateTimeKind.Utc)
+                throw new ArgumentException("StartsAt debe estar en UTC.");
+            _startsAt = value;
+        }
+    }
     public int DurationMinutes { get; set; }
     public Status Status { get; set; }
 
