@@ -14,9 +14,8 @@ namespace Api.Controllers
         [HttpPost]
         public IActionResult CreateTask(string roverName, [FromBody] RoverTask task)
         {
-            // Validar que el nombre del rover coincida con la ruta
-            if (task.RoverName != roverName)
-                return BadRequest("El nombre del rover en la ruta y en la tarea no coinciden.");
+            // Asigna el nombre del rover desde la URL
+            task.RoverName = roverName;
 
             // Regla de solapamiento
             if (Tasks.Any(t => t.RoverName == roverName && t.IsOverlapping(task)))
