@@ -1,4 +1,4 @@
-# rover-mission-planner# rover-mission-planner
+# rover-mission-planner#
 
 ## Build y test (máx. 3 comandos)
 
