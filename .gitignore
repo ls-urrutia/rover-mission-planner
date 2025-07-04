@@ -26,3 +26,20 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ==== Visual Studio / C# ====
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+
+# ==== Rider / JetBrains IDE ====
+.idea/
+
+# ==== DotNet Core ====
+.vscode/
+!.vscode/launch.json
+
+# ==== Archivos temporales ====
+*.log
