@@ -41,3 +41,5 @@ C:\Users\luise\Dropbox\Prog\tests\rover-mission-planner\api\obj\Debug\net8.0\ref
 C:\Users\luise\Dropbox\Prog\tests\rover-mission-planner\api\obj\Debug\net8.0\Api.pdb
 C:\Users\luise\Dropbox\Prog\tests\rover-mission-planner\api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 C:\Users\luise\Dropbox\Prog\tests\rover-mission-planner\api\obj\Debug\net8.0\ref\Api.dll
+C:\Users\luise\Dropbox\Prog\tests\rover-mission-planner\api\bin\Debug\net8.0\Prometheus.NetStandard.dll
+C:\Users\luise\Dropbox\Prog\tests\rover-mission-planner\api\bin\Debug\net8.0\Prometheus.AspNetCore.dll

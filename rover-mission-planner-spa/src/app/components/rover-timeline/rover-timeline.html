@@ -1,0 +1,44 @@
+<h2>Timeline for {{ roverName }} ({{ date }})</h2>
+<div *ngFor="let task of tasks" class="timeline-item">
+  <div>
+    <strong>{{ task.taskType }}</strong> ({{ task.status }})<br>
+    {{ task.startsAt }} - {{ task.durationMinutes }} min<br>
+    Lat: {{ task.latitude }}, Lng: {{ task.longitude }}
+  </div>
+</div>
+<p>Utilización del rover: {{ utilization | number:'1.0-2' }}%</p>
+
+<form (ngSubmit)="addTask()" #taskForm="ngForm">
+  <label>
+    Tipo de tarea:
+    <select name="taskType" [(ngModel)]="newTask.taskType" required>
+      <option value="" disabled>Selecciona tipo</option>
+      <option value="Drill">Drill</option>
+      <option value="Sample">Sample</option>
+      <option value="Photo">Photo</option>
+      <option value="Charge">Charge</option>
+    </select>
+  </label>
+  <label>
+    Latitud:
+    <input name="latitude" type="number" [(ngModel)]="newTask.latitude" required />
+  </label>
+  <label>
+    Longitud:
+    <input name="longitude" type="number" [(ngModel)]="newTask.longitude" required />
+  </label>
+  <label>
+    Inicio:
+    <input name="startsAt" type="datetime-local" [(ngModel)]="newTask.startsAt" required />
+  </label>
+  <label>
+    Duración (min):
+    <input name="durationMinutes" type="number" [(ngModel)]="newTask.durationMinutes" required />
+  </label>
+  <button type="submit" [disabled]="!newTask.taskType">Agregar tarea</button>
+</form>
+<div *ngIf="errorMsg" class="error-msg">
+  {{ errorMsg }}
+</div>
+<script>
+</script>

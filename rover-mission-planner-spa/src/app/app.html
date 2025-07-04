@@ -1,0 +1,12 @@
+<h1>Rover Mission Planner</h1>
+
+<label>
+  Rover:
+  <input [(ngModel)]="roverName" placeholder="Rover name" />
+</label>
+<label>
+  Fecha:
+  <input type="date" [(ngModel)]="date" />
+</label>
+
+<app-rover-timeline [roverName]="roverName" [date]="date"></app-rover-timeline>

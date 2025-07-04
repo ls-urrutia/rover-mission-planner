@@ -1,6 +1,8 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Api.Middleware;
+using System.Text.Json.Serialization; 
+using Prometheus; // Agrega esto arriba
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers()
-    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Api.Validators.RoverTaskValidator>());
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Api.Validators.RoverTaskValidator>())
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); // <-- AGREGA ESTA LÍNEA
+    });
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -22,6 +39,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseCors();
+
+// Agrega este middleware para exponer /metrics
+app.UseMetricServer(); // <-- Esto expone /metrics para Prometheus
+app.UseHttpMetrics();  // <-- Esto agrega métricas de requests HTTP
 
 app.MapControllers();
 
